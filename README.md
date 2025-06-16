@@ -15,7 +15,7 @@ Our Two-Stage MA-SST-DDPG framework consists of:
 
 - **Stage 2: MA-SST-DDPG Training with Online Learning**  
   The recorded near-miss data is used to **pre-train a multi-agent safe reinforcement learning model**. The trained policy is then deployed in the CARLA environment to **interact with new agents**, and the model is **continuously refined through online learning**, ensuring it adapts to evolving behaviors and generates diverse, realistic, and risky interaction data.
-- **Output:** A realistic and scalable dataset with over 80,000 interaction episodes.
+- **Output:** A realistic and scalable dataset of over **80,000 near-miss interaction episodes**, capturing **genuine collision-avoidance behaviors** between vehicles and pedestrians in simulated urban intersections.
 
 ---
 
