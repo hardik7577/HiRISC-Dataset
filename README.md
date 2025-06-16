@@ -1,4 +1,4 @@
-# HiRISC Dataset: High-Risk Intersection Simulation for Collision Avoidance
+# HiRISC Dataset: High-Risk Interactive Scenarios for Collision-avoidance
 
 This repository hosts the **HiRISC Dataset**, a large-scale, high-resolution dataset of **vehicle-pedestrian near-miss interactions at urban intersections**, generated using our proposed **Two-Stage Multi-Agent SST-DDPG framework** in CARLA.
 
