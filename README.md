@@ -1,1 +1,136 @@
-# HiRISC-Dataset
+# HiRISC Dataset: High-Risk Intersection Simulation for Collision Avoidance
+
+This repository hosts the **HiRISC Dataset**, a large-scale, high-resolution dataset of **vehicle-pedestrian near-miss interactions at urban intersections**, generated using our proposed **Two-Stage Multi-Agent SST-DDPG framework** in CARLA.
+
+---
+
+## 🧠 Framework Overview
+
+![Framework Overview](https://github.com/Qpu523/HiRISC-Dataset/blob/e5532840771f062f3f88ca2029b0ff375d10c609/Config/Picture1.png)
+
+Our Two-Stage MA-SST-DDPG framework consists of:
+
+- **Stage 1: Risk Scenario Generation using CurvTTC Trigger**  
+  In diverse CARLA intersection scenarios, we simulate thousands of AV–pedestrian interactions. When the computed **Curvilinear Time-to-Collision (CurvTTC)** falls below a risk threshold (e.g., < 3s), the interaction is recorded as a **near-miss trajectory**. This produces a high-quality dataset rich in evasive maneuvers and collision-avoidance behaviors.
+
+- **Stage 2: MA-SST-DDPG Training with Online Learning**  
+  The recorded near-miss data is used to **pre-train a multi-agent safe reinforcement learning model**. The trained policy is then deployed in the CARLA environment to **interact with new agents**, and the model is **continuously refined through online learning**, ensuring it adapts to evolving behaviors and generates diverse, realistic, and risky interaction data.
+- **Output:** A realistic and scalable dataset with over 83,000 interaction episodes.
+
+---
+
+## 🗺 Simulation Environment
+
+![Simulation Intersections](https://github.com/Qpu523/HiRISC-Dataset/blob/e5532840771f062f3f88ca2029b0ff375d10c609/Config/Picture2.png)
+
+We simulate two intersection layouts (A and B) in CARLA's Town10. Each location contains 4 pedestrian crossing directions with turning vehicles:
+
+| Scenario ID | Location | Description                                |
+|-------------|----------|--------------------------------------------|
+| ①–④         | A        | Right-turn + S→N / N→S / E→W / W→E         |
+| ⑤–⑧         | B        | Right-turn + S→N / N→S / E→W / W→E         |
+
+
+---
+
+## 📊 Representative Trajectories
+
+![Trajectory Examples](https://github.com/Qpu523/HiRISC-Dataset/blob/e5532840771f062f3f88ca2029b0ff375d10c609/Config/Picture3.png)
+
+Red = Pedestrian, Blue = Vehicle. Color gradient = time. The plots highlight different temporal-spatial conflict patterns across 8 scenarios.
+
+---
+
+## 📁 Dataset Structure
+
+- 8 scenario files (e.g., `LocationA_PedCross_S-N.csv`, etc.)
+- Each file contains >10,000 episodes
+- Recorded at 20 Hz over ~2.6 km pedestrian + ~1.7 km vehicle trajectories
+
+| Field Name         | Description                                 |
+|--------------------|---------------------------------------------|
+| `count`            | Interaction episode index                   |
+| `frame`            | Frame number within the episode             |
+| `veh_id`, `ped_id` | Unique identifiers for vehicle and pedestrian |
+| `position_x_av`    | Vehicle x-position (m)                      |
+| `velocity_y_ped`   | Pedestrian y-velocity (m/s)                 |
+| `CurvTTC`          | Curvilinear time-to-collision (s)           |
+| ...                | More details in the paper                   |
+
+---
+
+## 📥 Download High-Risk Intersection Simulation for Collision Avoidance Dataset
+
+<table>
+<tr>
+<th><a href="https://1drv.ms/f/c/your-link-1">Subset 1<br></a>(Moderate-speed frontal conflict)</th>
+<th><a href="https://1drv.ms/f/c/your-link-2">Subset 2<br></a>(Left-turn with evasive pedestrian behavior)</th>
+</tr>
+<tr>
+<td align="center"><img src="https://github.com/Qpu523/HiRISC-Dataset/blob/e5532840771f062f3f88ca2029b0ff375d10c609/Config/1.png" alt="Subset 1" /></td>
+<td align="center"><img src="https://github.com/Qpu523/HiRISC-Dataset/blob/e5532840771f062f3f88ca2029b0ff375d10c609/Config/2.png" alt="Subset 2" /></td>
+</tr>
+
+<tr>
+<th><a href="https://1drv.ms/f/c/your-link-3">Subset 3<br></a>(Crossing pedestrian, high deceleration)</th>
+<th><a href="https://1drv.ms/f/c/your-link-4">Subset 4<br></a>(Aggressive vehicle, pedestrian stop)</th>
+</tr>
+<tr>
+<td align="center"><img src="https://github.com/Qpu523/HiRISC-Dataset/blob/e5532840771f062f3f88ca2029b0ff375d10c609/Config/3.png" alt="Subset 3" /></td>
+<td align="center"><img src="https://github.com/Qpu523/HiRISC-Dataset/blob/e5532840771f062f3f88ca2029b0ff375d10c609/Config/4.png" alt="Subset 4" /></td>
+</tr>
+
+<tr>
+<th><a href="https://1drv.ms/f/c/your-link-5">Subset 5<br></a>(Bidirectional conflict)</th>
+<th><a href="https://1drv.ms/f/c/your-link-6">Subset 6<br></a>(Vehicle swerving avoidance)</th>
+</tr>
+<tr>
+<td align="center"><img src="https://github.com/Qpu523/HiRISC-Dataset/blob/e5532840771f062f3f88ca2029b0ff375d10c609/Config/5.png" alt="Subset 5" /></td>
+<td align="center"><img src="https://github.com/Qpu523/HiRISC-Dataset/blob/e5532840771f062f3f88ca2029b0ff375d10c609/Config/6.png" alt="Subset 6" /></td>
+</tr>
+
+<tr>
+<th><a href="https://1drv.ms/f/c/your-link-7">Subset 7<br></a>(Curved AV movement, stationary pedestrian)</th>
+<th><a href="https://1drv.ms/f/c/your-link-8">Subset 8<br></a>(Multi-agent dynamic conflict)</th>
+</tr>
+<tr>
+<td align="center"><img src="https://github.com/Qpu523/HiRISC-Dataset/blob/e5532840771f062f3f88ca2029b0ff375d10c609/Config/7.png" alt="Subset 7" /></td>
+<td align="center"><img src="https://github.com/Qpu523/HiRISC-Dataset/blob/e5532840771f062f3f88ca2029b0ff375d10c609/Config/8.png" alt="Subset 8" /></td>
+</tr>
+
+</table>
+---
+
+
+
+## 📈 Model Evaluation Summary
+
+- Achieves **lowest RMSE** among all baselines (see paper Table 6)
+- **Turing Test** with 51 participants: model-generated behavior **statistically indistinguishable** from real-world (p = 0.9282)
+
+
+---
+
+## 📬 Contact
+
+For questions or extended data access:
+
+- **Email:** kxie@odu.edu
+- **Email:** qpu001@odu.edu
+---
+
+
+
+## 📚 Citation
+
+If you use the HiRISC Dataset or associated model, please cite the following:
+
+```bibtex
+
+
+}
+```
+
+---
+
+
