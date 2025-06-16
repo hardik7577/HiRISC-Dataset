@@ -81,7 +81,7 @@ Red = Pedestrian, Blue = Vehicle. Color gradient = time. The plots highlight dif
 </tr>
 
 <tr>
-<th><a href="https://1drv.ms/f/c/your-link-5">Subset 5<br></a>(BPedestrian crossing from South to North)</th>
+<th><a href="https://1drv.ms/f/c/your-link-5">Subset 5<br></a>(Pedestrian crossing from South to North)</th>
 <th><a href="https://1drv.ms/f/c/your-link-6">Subset 6<br></a>(Pedestrian crossing from North to South)</th>
 </tr>
 <tr>
