@@ -8,7 +8,7 @@ This repository hosts the **HiRISC Dataset**, a large-scale, high-resolution dat
 
 ![Framework Overview](https://github.com/Qpu523/HiRISC-Dataset/blob/7ac52fe8a27fbb071942795e77c5461db8f661d2/Config/Picture11.png)
 
-Our Two-Stage MA-SST-DDPG framework consists of:
+The Two-Stage MA-SST-DDPG framework consists of:
 
 - **Stage 1: Risk Scenario Generation using CurvTTC Trigger**  
   In diverse CARLA intersection scenarios, we simulate thousands of AV–pedestrian interactions. When the computed **Curvilinear Time-to-Collision (CurvTTC)** falls below a risk threshold, the interaction is recorded as a **near-miss trajectory**. This produces a high-quality dataset in evasive maneuvers and collision-avoidance behaviors.
@@ -123,6 +123,16 @@ A total of **51 participants** rated 12 randomized videos (4 per category), and 
 | Carla                 | Two-Stage MA-SST-DDPG   | -13.5004         | <0.0001     | 0.4951           | <0.0001     | Yes                         |
 | Carla                 | Real world              | -13.6295         | <0.0001     | 0.5294           | <0.0001     | Yes                         |
 | Two-Stage MA-SST-DDPG | Real world              | -0.0902          | 0.9282      | 0.0588           | 0.8732      | No                          |
+
+
+
+### 📊 Table 8: Statistical Comparison of Perceptual Scores Between Video Types
+
+| Group 1               | Group 2               | t-statistic | p-value  | KS statistic | p-value  | Significant Difference |
+|-----------------------|------------------------|-------------|----------|--------------|----------|-------------------------|
+| Carla                 | Two-Stage MA-SST-DDPG | -13.5004    | <0.0001  | 0.4951       | <0.0001  | Yes                     |
+| Carla                 | Real world            | -13.6295    | <0.0001  | 0.5294       | <0.0001  | Yes                     |
+| Two-Stage MA-SST-DDPG | Real world            | -0.0902     | 0.9282   | 0.0588       | 0.8732   | No                      |
 
 ---
 
