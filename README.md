@@ -112,7 +112,7 @@ We conducted a **Turing Test** to assess whether human participants could distin
 
 A total of **51 participants** rated 12 randomized videos (4 per category), and their perception scores were statistically analyzed using **t-tests** and **Kolmogorov–Smirnov (KS) tests**.
 
-📺 **Watch the Evaluation Video**: [YouTube Link Coming Soon](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+📺 **Watch the Evaluation Video**: [YouTube Link](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
 
 ---
 
