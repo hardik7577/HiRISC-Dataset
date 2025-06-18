@@ -28,24 +28,17 @@ We simulate two intersection layouts (**A** and **B**) in CARLA's Town10. Each l
 - 🟩 **Green arrow**: Pedestrian crossing direction  
 - 🔴 **Red arrow**: Vehicle right-turn direction 
 
-| Scenario ID | Location | Description                                |
-|-------------|----------|--------------------------------------------|
-| ①–④         | A        | Right-turn + S→N / N→S / E→W / W→E         |
-| ⑤–⑧         | B        | Right-turn + S→N / N→S / E→W / W→E         |
-
-
-
-
 | Scenario ID | Location | Vehicle Turn Direction | Pedestrian Direction |
 |-------------|----------|------------------------|----------------------|
 | ①           | A        | Right-turn             | East → West          |
 | ②           |          |                        | South → North        |
 | ③           |          |                        | West → East          |
 | ④           |          |                        | North → South        |
-| ⑤           | B        |                        | East → West          |
+| ⑤           | B        | Right-turn             | East → West          |
 | ⑥           |          |                        | South → North        |
 | ⑦           |          |                        | West → East          |
 | ⑧           |          |                        | North → South        |
+
 
 
 
