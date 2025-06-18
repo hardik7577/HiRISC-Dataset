@@ -26,7 +26,7 @@ The Two-Stage MA-SST-DDPG framework consists of:
 We simulate two intersection layouts (**A** and **B**) in CARLA's Town10. Each location contains four vehicle-pedestrian interaction scenarios involving right-turning vehicles and crossing pedestrians.
 
 - 🟩 **Green arrow**: Pedestrian crossing direction  
-- 🔴 **Red arrow**: Vehicle right-turn direction 
+- 🟥 **Red arrow**: Vehicle right-turn direction
 
 | Scenario ID | Location | Vehicle Turn Direction | Pedestrian Direction |
 |-------------|----------|------------------------|----------------------|
