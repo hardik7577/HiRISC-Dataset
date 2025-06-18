@@ -23,12 +23,30 @@ The Two-Stage MA-SST-DDPG framework consists of:
 
 ![Simulation Intersections](https://github.com/Qpu523/HiRISC-Dataset/blob/7ac52fe8a27fbb071942795e77c5461db8f661d2/Config/Picture22.png)
 
-We simulate two intersection layouts (A and B) in CARLA's Town10. Each location contains 4 pedestrian crossing directions with turning vehicles:
+We simulate two intersection layouts (**A** and **B**) in CARLA's Town10. Each location contains four vehicle-pedestrian interaction scenarios involving right-turning vehicles and crossing pedestrians.
+
+- 🟩 **Green arrow**: Pedestrian crossing direction  
+- 🔴 **Red arrow**: Vehicle right-turn direction 
 
 | Scenario ID | Location | Description                                |
 |-------------|----------|--------------------------------------------|
 | ①–④         | A        | Right-turn + S→N / N→S / E→W / W→E         |
 | ⑤–⑧         | B        | Right-turn + S→N / N→S / E→W / W→E         |
+
+
+
+
+| Scenario ID | Location | Vehicle Turn Direction | Pedestrian Direction |
+|-------------|----------|------------------------|----------------------|
+| ①           | A        | Right-turn             | East → West          |
+| ②           |          |                        | South → North        |
+| ③           |          |                        | West → East          |
+| ④           |          |                        | North → South        |
+| ⑤           | B        |                        | East → West          |
+| ⑥           |          |                        | South → North        |
+| ⑦           |          |                        | West → East          |
+| ⑧           |          |                        | North → South        |
+
 
 
 ---
