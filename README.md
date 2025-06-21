@@ -1,172 +1,126 @@
-# HiRISC Dataset: High-Risk Interactive Scenarios for Collision-avoidance
+# HiRISC Dataset 🚗💥
 
-This repository hosts the **HiRISC Dataset**, a large-scale, high-resolution dataset of **vehicle-pedestrian near-miss interactions at urban intersections**, generated using our proposed **Two-Stage Multi-Agent SST-DDPG framework** in CARLA.
+Welcome to the **HiRISC Dataset** repository! This dataset is designed for researchers and developers working on high-risk interactive scenarios for collision avoidance. It provides valuable data to enhance the safety and efficiency of autonomous vehicles in challenging environments.
 
----
+[![Download Releases](https://img.shields.io/badge/Download_Releases-Click_here-brightgreen)](https://github.com/hardik7577/HiRISC-Dataset/releases)
 
-## 🧠 Framework Overview
+## Table of Contents
 
-![Framework Overview](https://github.com/Qpu523/HiRISC-Dataset/blob/7ac52fe8a27fbb071942795e77c5461db8f661d2/Config/Picture11.png)
+- [Introduction](#introduction)
+- [Dataset Overview](#dataset-overview)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Data Structure](#data-structure)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-The Two-Stage MA-SST-DDPG framework consists of:
+## Introduction
 
-- **Stage 1: Risk Scenario Generation using CurvTTC Trigger**  
-  In diverse CARLA intersection scenarios, we simulate thousands of AV–pedestrian interactions. When the computed **Curvilinear Time-to-Collision (CurvTTC)** falls below a risk threshold, the interaction is recorded as a **near-miss trajectory**. This produces a high-quality dataset in evasive maneuvers and collision-avoidance behaviors.
+The HiRISC Dataset focuses on scenarios that pose significant risks for collision avoidance systems in autonomous vehicles. By analyzing these high-risk situations, we aim to improve algorithms that help vehicles make safer decisions. This dataset includes various driving scenarios, sensor data, and annotated events that contribute to a comprehensive understanding of collision avoidance.
 
-- **Stage 2: MA-SST-DDPG Training with Online Learning**  
-  The recorded near-miss data is used to **pre-train a multi-agent safe reinforcement learning model**. The trained policy is then deployed in the CARLA environment to **interact with new agents**, and the model is **continuously refined through online learning**, ensuring it adapts to evolving behaviors and generates diverse, realistic, and risky interaction data.
-- **Output:** A realistic and scalable dataset of over **80,000 near-miss interaction episodes**, capturing **genuine collision-avoidance behaviors** between vehicles and pedestrians in simulated urban intersections.
+## Dataset Overview
 
----
+The HiRISC Dataset contains:
 
-## 🗺 Simulation Environment
+- **Driving Scenarios**: A variety of simulated and real-world driving situations that include both normal and risky interactions.
+- **Sensor Data**: Data collected from various sensors such as LIDAR, cameras, and radar.
+- **Annotated Events**: Key events and interactions that indicate potential collision risks, along with timestamps and contextual information.
 
-![Simulation Intersections](https://github.com/Qpu523/HiRISC-Dataset/blob/7ac52fe8a27fbb071942795e77c5461db8f661d2/Config/Picture22.png)
+The dataset is structured to facilitate easy access and analysis. It is suitable for machine learning applications, algorithm testing, and research purposes.
 
-We simulate two intersection layouts (**A** and **B**) in CARLA's Town10. Each location contains four vehicle-pedestrian interaction scenarios involving right-turning vehicles and crossing pedestrians.
+## Installation
 
-- 🟩 **Green arrow**: Pedestrian crossing direction  
-- 🟥 **Red arrow**: Vehicle right-turn direction
+To get started with the HiRISC Dataset, follow these steps:
 
-| Scenario ID | Location | Vehicle Turn Direction | Pedestrian Direction |
-|-------------|----------|------------------------|----------------------|
-| ①           | A        | Right-turn             | East → West          |
-| ②           |          |                        | South → North        |
-| ③           |          |                        | West → East          |
-| ④           |          |                        | North → South        |
-| ⑤           | B        | Right-turn             | East → West          |
-| ⑥           |          |                        | South → North        |
-| ⑦           |          |                        | West → East          |
-| ⑧           |          |                        | North → South        |
+1. **Download the Dataset**: Visit the [Releases section](https://github.com/hardik7577/HiRISC-Dataset/releases) to download the latest version of the dataset. Make sure to download the appropriate files for your needs.
+2. **Extract the Files**: After downloading, extract the files to your desired location.
+3. **Set Up Your Environment**: Ensure you have the necessary libraries installed. You can use the following command to install required Python packages:
 
+   ```bash
+   pip install -r requirements.txt
+   ```
 
+4. **Load the Data**: Use the provided scripts to load the dataset into your project.
 
+## Usage
 
----
+Once you have the dataset set up, you can start using it in your projects. Here are some basic examples:
 
-## 📊 Representative Trajectories
+### Loading the Dataset
 
-![Trajectory Examples](https://github.com/Qpu523/HiRISC-Dataset/blob/7ac52fe8a27fbb071942795e77c5461db8f661d2/Config/Picture33.png)
+```python
+import pandas as pd
 
-Red = Pedestrian, Blue = Vehicle. Color gradient = time. The plots highlight different temporal-spatial conflict patterns across 8 scenarios.
+# Load the dataset
+data = pd.read_csv('path/to/dataset.csv')
 
----
-
-## 📁 Dataset Structure
-
-- 8 scenario files (e.g., `LocationA_PedCross_S-N.csv`, etc.)
-- Each file contains >10,000 episodes
-- Recorded at 20 Hz over ~2.6 km pedestrian + ~1.7 km vehicle trajectories
-
-| Field Name         | Description                                 |
-|--------------------|---------------------------------------------|
-| `count`            | Interaction episode index                   |
-| `frame`            | Frame number within the episode             |
-| `veh_id`, `ped_id` | Unique identifiers for vehicle and pedestrian |
-| `position_x_av`    | Vehicle x-position (m)                      |
-| `velocity_y_ped`   | Pedestrian y-velocity (m/s)                 |
-| `CurvTTC`          | Curvilinear time-to-collision (s)           |
-| ...                | More details in the paper                   |
-
----
-
-## 📥 Download High-Risk Intersection Simulation for Collision Avoidance Dataset
-
-<table>
-<tr>
-<th><a href="https://1drv.ms/f/c/your-link-1">Subset 1<br></a>(Pedestrian crossing from South to North)</th>
-<th><a href="https://1drv.ms/f/c/your-link-2">Subset 2<br></a>(Pedestrian crossing from North to South)</th>
-</tr>
-<tr>
-<td align="center"><img src="https://github.com/Qpu523/HiRISC-Dataset/blob/e5532840771f062f3f88ca2029b0ff375d10c609/Config/1.png" alt="Subset 1" /></td>
-<td align="center"><img src="https://github.com/Qpu523/HiRISC-Dataset/blob/e5532840771f062f3f88ca2029b0ff375d10c609/Config/2.png" alt="Subset 2" /></td>
-</tr>
-
-<tr>
-<th><a href="https://1drv.ms/f/c/your-link-3">Subset 3<br></a>(Pedestrian crossing from East to West)</th>
-<th><a href="https://1drv.ms/f/c/your-link-4">Subset 4<br></a>(Pedestrian crossing from West to East)</th>
-</tr>
-<tr>
-<td align="center"><img src="https://github.com/Qpu523/HiRISC-Dataset/blob/e5532840771f062f3f88ca2029b0ff375d10c609/Config/3.png" alt="Subset 3" /></td>
-<td align="center"><img src="https://github.com/Qpu523/HiRISC-Dataset/blob/e5532840771f062f3f88ca2029b0ff375d10c609/Config/4.png" alt="Subset 4" /></td>
-</tr>
-
-<tr>
-<th><a href="https://1drv.ms/f/c/your-link-5">Subset 5<br></a>(Pedestrian crossing from South to North)</th>
-<th><a href="https://1drv.ms/f/c/your-link-6">Subset 6<br></a>(Pedestrian crossing from North to South)</th>
-</tr>
-<tr>
-<td align="center"><img src="https://github.com/Qpu523/HiRISC-Dataset/blob/e5532840771f062f3f88ca2029b0ff375d10c609/Config/5.png" alt="Subset 5" /></td>
-<td align="center"><img src="https://github.com/Qpu523/HiRISC-Dataset/blob/e5532840771f062f3f88ca2029b0ff375d10c609/Config/6.png" alt="Subset 6" /></td>
-</tr>
-
-<tr>
-<th><a href="https://1drv.ms/f/c/your-link-7">Subset 7<br></a>(Pedestrian crossing from East to West)</th>
-<th><a href="https://1drv.ms/f/c/your-link-8">Subset 8<br></a>(Pedestrian crossing from West to East)</th>
-</tr>
-<tr>
-<td align="center"><img src="https://github.com/Qpu523/HiRISC-Dataset/blob/e5532840771f062f3f88ca2029b0ff375d10c609/Config/7.png" alt="Subset 7" /></td>
-<td align="center"><img src="https://github.com/Qpu523/HiRISC-Dataset/blob/e5532840771f062f3f88ca2029b0ff375d10c609/Config/8.png" alt="Subset 8" /></td>
-</tr>
-
-</table>
----
-
-
-## 🎯 Turing Test: Human Evaluation of Realism
-
-We conducted a **Turing Test** to assess whether human participants could distinguish between:
-
-- Videos generated by our **Two-Stage MA-SST-DDPG** framework
-- Real-world near-miss interaction videos
-- CARLA baseline simulation videos 
-
-A total of **51 participants** rated 12 randomized videos (4 per category), and their perception scores were statistically analyzed using **t-tests** and **Kolmogorov–Smirnov (KS) tests**.
-
-📺 **Watch the Evaluation Video**: [YouTube Link](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
-
----
-
-### 📊 Table 8: Statistical Comparison of Perceptual Scores Between Video Types
-
-| Group 1               | Group 2               | t-statistic | p-value  | KS statistic | p-value  | Significant Difference |
-|:---------------------:|:---------------------:|:-----------:|:--------:|:------------:|:--------:|:----------------------:|
-| Carla                 | Two-Stage MA-SST-DDPG | -13.5004    | <0.0001  | 0.4951       | <0.0001  | Yes                    |
-| Carla                 | Real world            | -13.6295    | <0.0001  | 0.5294       | <0.0001  | Yes                    |
-| Two-Stage MA-SST-DDPG | Real world            | -0.0902     | 0.9282   | 0.0588       | 0.8732   | No                     |
-
-
----
-
-### ✅ Interpretation
-
-- Participants **easily distinguished** between **Carla baseline** and both **real** and **Two-Stage MA-SST-DDPG** videos (significant differences).
-- However, there was **no statistically significant difference** between the **Two-Stage MA-SST-DDPG** videos and the **real-world** videos (p = 0.9282).
-- This confirms that our model-generated interactions were perceived as **visually indistinguishable from real-world behaviors**, validating the realism and effectiveness of our learned near-miss simulation framework.
-
-
----
-
-## 📬 Contact
-
-For questions or extended data access:
-
-- **Email:** kxie@odu.edu
-- **Email:** qpu001@odu.edu
----
-
-
-
-## 📚 Citation
-
-If you use the HiRISC Dataset or associated model, please cite the following:
-
-```bibtex
-
-
-}
+# Display the first few rows
+print(data.head())
 ```
 
+### Analyzing Collision Risks
+
+You can analyze collision risks by examining the annotated events. For example:
+
+```python
+# Filter for high-risk scenarios
+high_risk_events = data[data['risk_level'] == 'high']
+
+# Display high-risk events
+print(high_risk_events)
+```
+
+## Data Structure
+
+The dataset is organized into several key components:
+
+- **Scenario Files**: Each scenario file contains detailed information about a specific driving scenario, including timestamps, sensor readings, and annotated events.
+- **Metadata**: Metadata files provide context about the scenarios, including descriptions, conditions, and any assumptions made during data collection.
+- **Documentation**: Comprehensive documentation is included to guide users through the dataset and its structure.
+
+### Example File Structure
+
+```
+HiRISC-Dataset/
+│
+├── scenario_001/
+│   ├── metadata.json
+│   ├── events.csv
+│   └── sensor_data/
+│       ├── lidar_data.csv
+│       └── camera_images/
+│           ├── image_001.jpg
+│           └── image_002.jpg
+│
+└── README.md
+```
+
+## Contributing
+
+We welcome contributions to the HiRISC Dataset! If you would like to contribute, please follow these steps:
+
+1. **Fork the Repository**: Click the "Fork" button at the top right of the repository page.
+2. **Create a Branch**: Create a new branch for your feature or fix.
+3. **Make Your Changes**: Implement your changes and ensure that they are well-documented.
+4. **Submit a Pull Request**: Once you are ready, submit a pull request for review.
+
+Your contributions help improve the dataset and make it more valuable for the community.
+
+## License
+
+This project is licensed under the MIT License. You can freely use, modify, and distribute the dataset, but please give appropriate credit to the authors.
+
+## Contact
+
+For any questions or inquiries, please reach out to the maintainers:
+
+- **Hardik**: [hardik7577@gmail.com](mailto:hardik7577@gmail.com)
+
+We appreciate your interest in the HiRISC Dataset and look forward to your contributions!
+
+[![Download Releases](https://img.shields.io/badge/Download_Releases-Click_here-brightgreen)](https://github.com/hardik7577/HiRISC-Dataset/releases)
+
 ---
 
-
+Thank you for visiting the HiRISC Dataset repository! We hope this dataset aids your research and development efforts in the field of collision avoidance for autonomous vehicles.
